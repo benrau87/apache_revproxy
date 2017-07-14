@@ -75,7 +75,7 @@ fi
 ########################################
 apt-get update -y
 apt-get upgrade -y
-pt-get install apache2 build-essential -y
+apt-get install apache2 build-essential -y
 sudo /etc/init.d/apache2 start
 sudo update-rc.d apache2 defaults
 apt-get install libapache2-mod-proxy-html libxml2-dev -y
@@ -97,4 +97,10 @@ mkdir /etc/apache2/ssl
 cp ca.crt ca.key ca.csr /etc/apache2/ssl/
 cp $gitdir/proxy-ssl-host.conf /etc/apache2/sites-available/proxy-ssl-host.conf
 a2ensite proxy-ssl-host.conf
+echo "Listen 8000" | tee -a /etc/apache2/ports.conf
+echo "Listen 8080" | tee -a /etc/apache2/ports.conf
+echo "Listen 8181" | tee -a /etc/apache2/ports.conf
+echo "Listen 8282" | tee -a /etc/apache2/ports.conf
+echo "Listen 8383" | tee -a /etc/apache2/ports.conf
+echo "Listen 19999" | tee -a /etc/apache2/ports.conf
 service apache2 restart
