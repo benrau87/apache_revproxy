@@ -95,6 +95,6 @@ openssl req -nodes -new -key ca.key -out ca.csr
 openssl x509 -req -days 365 -in ca.csr -signkey ca.key -out ca.crt
 mkdir /etc/apache2/ssl
 cp ca.crt ca.key ca.csr /etc/apache2/ssl/
-cp $gitdir/proxy-host.conf /etc/apache2/sites-available/proxy-host.conf
-cp $gitdir/000-default.conf/etc/apache2/sites-available/000-default.conf
+cp $gitdir/proxy-ssl-host.conf /etc/apache2/sites-available/proxy-ssl-host.conf
+a2ensite proxy-ssl-host.conf
 service apache2 restart
